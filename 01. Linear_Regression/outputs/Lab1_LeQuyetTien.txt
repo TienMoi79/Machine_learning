@@ -1,0 +1,96 @@
+--- Bước 1 — Đọc dữ liệu ---
+Kich thuoc bang (so dong, so cot): (60, 4)
+
+Nam dong dau tien:
+   dien_tich  so_phong  tuoi_nha   gia
+0       35.5         1        18  3.00
+1       37.6         2         7  3.87
+2       49.4         2        20  4.25
+3       49.0         2        16  4.60
+4       49.9         1        12  3.99
+
+Ten cac cot: ['dien_tich', 'so_phong', 'tuoi_nha', 'gia']
+
+Thong ke nhanh cot dien_tich va cot gia:
+       dien_tich    gia
+count      60.00  60.00
+mean       77.73   6.49
+std        20.22   1.64
+min        35.50   3.00
+25%        63.02   5.16
+50%        75.10   6.40
+75%        91.88   7.70
+max       117.50   9.74
+
+So o bi thieu trong tung cot:
+dien_tich    0
+so_phong     0
+tuoi_nha     0
+gia          0
+dtype: int64
+
+--- Bước 2 — Đo sai số ---
+Nam can duoc chon:
+    35.5 m2 ->  3.00 ty
+    61.3 m2 ->  4.56 ty
+    74.2 m2 ->  7.17 ty
+    91.3 m2 ->  7.83 ty
+   115.9 m2 ->  9.01 ty
+
+Duong thang y = 0.05 * x + 1.5
+  x =   35.5  that =  3.00  du doan =  3.28  sai so =  -0.28
+  x =   61.3  that =  4.56  du doan =  4.56  sai so =  -0.00
+  x =   74.2  that =  7.17  du doan =  5.21  sai so =  +1.96
+  x =   91.3  that =  7.83  du doan =  6.07  sai so =  +1.76
+  x =  115.9  that =  9.01  du doan =  7.30  sai so =  +1.71
+  MSE = 1.9947
+
+Duong thang y = 0.08 * x + 0.5
+  x =   35.5  that =  3.00  du doan =  3.34  sai so =  -0.34
+  x =   61.3  that =  4.56  du doan =  5.40  sai so =  -0.84
+  x =   74.2  that =  7.17  du doan =  6.44  sai so =  +0.73
+  x =   91.3  that =  7.83  du doan =  7.80  sai so =  +0.03
+  x =  115.9  that =  9.01  du doan =  9.77  sai so =  -0.76
+  MSE = 0.3896
+
+--- Bước 3 — Công thức bình phương tối thiểu ---
+He so goc w = 0.078367
+He so chan b = 0.401752
+MSE tren toan bo 60 can: 0.1790
+Can 80 m2 duoc du doan: 6.671 ty dong
+
+--- Bước 4 — Hồi quy với scikit-learn ---
+He so goc w = 0.078367
+He so chan b = 0.401752
+Can 80 m2 -> du doan 6.671 ty dong
+Can 100 m2 -> du doan 8.238 ty dong
+
+--- Bước 5 — Đánh giá mô hình ---
+So can de hoc: 48
+So can de kiem tra: 12
+MAE = 0.2578 ty dong
+MSE = 0.1392
+RMSE = 0.3730 ty dong
+R2 = 0.9622
+
+--- Bước 6 — Gradient descent ---
+   1   0.3143   1.2987   28.7437
+   2   0.5657   2.3376   18.4604
+   5   1.0564   4.3656    4.9714
+  10   1.4025   5.7961    0.6936
+  25   1.5653   6.4688    0.1797
+  50   1.5712   6.4932    0.1790
+ 100   1.5713   6.4933    0.1790
+ 200   1.5713   6.4933    0.1790
+w = 0.078367
+b = 0.401752
+
+--- Bước 7 — Hồi quy nhiều biến ---
+Mot bien: R2 tren tap kiem tra = 0.9622
+Ba bien: R2 tren tap kiem tra = 0.9761
+
+He so cua tung bien:
+  dien_tich    +0.0701
+  so_phong     +0.3042
+  tuoi_nha     -0.0295
+  he so chan   +0.6917

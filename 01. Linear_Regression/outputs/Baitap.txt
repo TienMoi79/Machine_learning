@@ -1,0 +1,35 @@
+--- Bài 1 ---
+BAI 1: LOC NHOM CAN HO LON
+So can co dien tich lon hon 100 m2: 10
+Gia trung binh cua nhom: 8.9620 ty dong
+
+--- Bài 2 ---
+Nhan xet: Nhin chung, can ho co nhieu phong ngu hon thuong co gia cao hon. Tuy nhien, cac muc gia van phan tan nen so phong khong phai la yeu to duy nhat quyet dinh gia.
+<string>:18: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+
+--- Bài 3 ---
+BAI 3: DUNG TUOI NHA DE DU DOAN GIA
+He so goc w = -0.037858
+He so chan b = 6.983593
+Nhan xet: w mang dau am, nghia la khi tuoi nha tang them mot nam thi gia du doan co xu huong giam.
+Giai thich: Can ho cu hon thuong xuong cap va co thoi gian su dung con lai ngan hon, nen gia ban thuong thap hon.
+Luu y: Day la quan he thong ke trong bo du lieu, khong phai ket luan nhan qua.
+<string>:32: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+
+--- Bài 4 ---
+BAI 4: THEM SO PHONG VAO MO HINH
+R2 cua mo hinh mot bien: 0.9622
+R2 cua mo hinh hai bien: 0.9698
+Muc thay doi R2: +0.0075
+Nhan xet: Them so phong lam R2 tang, nhung can dua vao muc tang de danh gia muc cai thien.
+
+--- Bài 5 ---
+Toc do hoc = 0.001: MSE tai vong 200 = 2.021752e+01
+Toc do hoc = 1.02: MSE tai vong 200 = 2.903918e+08
+Giai thich: 0.001 qua nho nen hoi tu cham; 1.02 qua lon nen nhay qua day va lam MSE tang manh.
+
+--- Bài 6 ---
+Can 60 m2 -> du doan 5.104 ty dong
+Can 80 m2 -> du doan 6.671 ty dong
+CANH BAO: 200 m2 nam ngoai khoang du lieu 35.5-117.5 m2; ket qua la ngoai suy.
+Can 200 m2 -> du doan 16.075 ty dong
