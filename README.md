@@ -15,6 +15,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 | Bài | Nội dung | Tài liệu và mã nguồn |
 |:---:|---|---|
 | 01 | Hồi quy tuyến tính: đọc và phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến | [01. Linear_Regression](01.%20Linear_Regression/) |
+| 02 | Hồi quy logistic: sigmoid, phân loại nhị phân, ma trận nhầm lẫn, các thước đo đánh giá, ngưỡng quyết định và mô hình nhiều biến | [02. Logistic_Regression](02.%20Logistic_Regression/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
 
@@ -30,6 +31,14 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ notebook
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 01
+├── 02. Logistic_Regression/
+│   ├── code/                 # Notebook thực hành và bài tập
+│   ├── data/                 # Dữ liệu sinh viên
+│   ├── figures/              # Biểu đồ sigmoid
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ notebook
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 02
 ├── .gitignore
 └── README.md
 ```
