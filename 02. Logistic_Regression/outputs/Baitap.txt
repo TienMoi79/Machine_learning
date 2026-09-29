@@ -1,0 +1,73 @@
+--- Cell 3 ---
+BAI 1: THONG KE THEO NHOM
+So ban co diem giua ky tu 7 tro len: 31
+Ty le qua mon cua nhom tu 7 tro len: 0.9032
+Ty le qua mon cua nhom con lai    : 0.4831
+Nhan xet: Diem giua ky phan biet hai nhom kha ro, vi ty le qua
+cua nhom tu 7 tro len cao hon nhieu so voi nhom con lai.
+
+--- Cell 5 ---
+Đã lưu biểu đồ tại: figures/sigmoid.png
+[Bieu do hien thi trong notebook]
+
+--- Cell 7 ---
+BAI 3: DU DOAN CHO MOT BAN CU THE
+w = 0.392819, b = -5.064890
+  3.00 gio | z = -3.8864 | p = 0.0201 | nhan = 0
+  8.00 gio | z = -1.9223 | p = 0.1276 | nhan = 0
+ 12.89 gio | z = -0.0015 | p = 0.4996 | nhan = 0
+ 18.00 gio | z = +2.0059 | p = 0.8814 | nhan = 1
+ 26.00 gio | z = +5.1484 | p = 0.9942 | nhan = 1
+
+Giai thich: moc chinh xac p = 0.5 la -b/w = 12.8937 gio.
+12.89 chi la gia tri lam tron cua moc nay, nen p rat gan 0.5.
+
+--- Cell 9 ---
+BAI 4: TU TINH BON THUOC DO
+TN = 9, FP = 3, FN = 1, TP = 17
+Accuracy  = (17 + 9) / 30 = 0.8667
+Precision = 17 / (17 + 3) = 0.8500
+Recall    = 17 / (17 + 1) = 0.9444
+F1        = 2*0.8500*0.9444 / (0.8500+0.9444) = 0.8947
+
+Giai thich: precision xet trong nhung ban bi doan la qua;
+recall xet trong nhung ban thuc su qua. F1 can bang hai dai luong nay.
+
+--- Cell 11 ---
+BAI 5: DO NGUONG TOT NHAT THEO F1
+Nguong   F1
+ 0.05   0.7826
+ 0.10   0.8182
+ 0.15   0.8182
+ 0.20   0.8571
+ 0.25   0.9000
+ 0.30   0.8947
+ 0.35   0.8947
+ 0.40   0.8947
+ 0.45   0.8947
+ 0.50   0.8947
+ 0.55   0.8889
+ 0.60   0.9412
+ 0.65   0.9412
+ 0.70   0.9091
+ 0.75   0.8750
+ 0.80   0.8387
+ 0.85   0.8000
+ 0.90   0.5600
+ 0.95   0.4348
+
+F1 cao nhat = 0.9412
+Cac nguong dat F1 cao nhat: 0.60, 0.65
+Chon nguong nho nhat trong cac nguong dong hang: 0.60
+Nhan xet: nguong tot nhat theo F1 khong dung bang 0.5.
+
+--- Cell 13 ---
+BAI 6: DOI LOP DUONG ROI CHAM LAI
+Lop qua mon (1): precision = 0.8500, recall = 0.9444
+Lop rot mon  (0): precision = 0.9000, recall = 0.7500
+
+Giai thich:
+Khi lop 1 la lop duong, precision va recall tap trung vao kha nang
+du doan va tim ra sinh vien qua mon. Khi doi lop 0 thanh lop duong,
+vai tro TP, FP, FN doi theo, nen mau so cua hai cong thuc cung doi.
+Vi vay hai bo so khac nhau du mo hinh va du lieu khong thay doi.
