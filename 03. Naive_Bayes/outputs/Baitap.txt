@@ -1,0 +1,67 @@
+--- Bài 1 ---
+P(qua môn) = 0.7450
+P(Nhóm 1 | qua môn) = 0.6376
+P(Nhóm 2 | qua môn) = 0.2819
+P(Nhóm 3 | qua môn) = 0.0805
+Tổng ba xác suất hậu nghiệm = 1.0000
+Giải thích: nhóm 1 chiếm tỷ lệ ban đầu lớn và có xác suất qua môn cao nhất,
+nên một sinh viên đã qua môn có khả năng thuộc nhóm 1 cao nhất.
+
+--- Bài 2 ---
+5 từ gợi ý thư rác mạnh nhất:
+  mãi              log-ratio = 3.2034
+  tay              log-ratio = 2.9056
+  ngay             log-ratio = 2.6618
+  miễn             log-ratio = 2.4795
+  trúng            log-ratio = 2.3742
+
+5 từ gợi ý tin thường mạnh nhất:
+  lớp              log-ratio = -2.6122
+  em               log-ratio = -2.5618
+  bài              log-ratio = -2.2946
+  báo              log-ratio = -2.2741
+  phòng            log-ratio = -2.2741
+
+Log-ratio dương lớn nghiêng về lớp rác; âm lớn về độ lớn nghiêng về lớp thường.
+
+--- Bài 3 ---
+   alpha   accuracy  precision     recall
+   0.001     0.9467     1.0000     0.8667
+     0.1     0.9467     1.0000     0.8667
+       1     0.9467     1.0000     0.8667
+      10     0.9467     1.0000     0.8667
+     100     0.9467     1.0000     0.8667
+
+Alpha quá lớn kéo xác suất của các từ về gần nhau, làm giảm sức phân biệt của mô hình.
+
+--- Bài 4 ---
+Số từ học từ tập train: 40
+Accuracy tự cài đặt: 0.9467
+Accuracy sklearn   : 0.9467
+Số dự đoán giống nhau: 75/75
+
+Dùng log giúp biến phép nhân nhiều xác suất nhỏ thành phép cộng,
+tránh hiện tượng số quá nhỏ bị làm tròn về 0 (underflow).
+
+--- Bài 5 ---
+Accuracy MultinomialNB: 0.8000
+Accuracy GaussianNB   : 0.9000
+
+GaussianNB phù hợp hơn vì giờ ôn và điểm giữa kỳ là biến liên tục.
+MultinomialNB được thiết kế cho số đếm/rời rạc, nên giả định của nó không phù hợp ở đây.
+
+--- Bài 6 ---
+Phân bố dữ liệu mất cân bằng:
+la_rac
+0    180
+1     20
+
+Ma trận nhầm lẫn:
+[[45  0]
+ [ 1  4]]
+Accuracy      : 0.9800
+Spam precision: 1.0000
+Spam recall   : 0.8000
+
+Accuracy có thể vẫn cao vì lớp thường chiếm đa số.
+Spam recall quan trọng hơn để biết mô hình đã bỏ sót bao nhiêu tin rác.

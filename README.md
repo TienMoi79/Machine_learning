@@ -16,6 +16,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 |:---:|---|---|
 | 01 | Hồi quy tuyến tính: đọc và phân tích dữ liệu giá nhà, bình phương tối thiểu, đánh giá mô hình, gradient descent và hồi quy nhiều biến | [01. Linear_Regression](01.%20Linear_Regression/) |
 | 02 | Hồi quy logistic: sigmoid, phân loại nhị phân, ma trận nhầm lẫn, các thước đo đánh giá, ngưỡng quyết định và mô hình nhiều biến | [02. Logistic_Regression](02.%20Logistic_Regression/) |
+| 03 | Naive Bayes: định lý Bayes, mô hình túi từ, lọc tin nhắn rác, làm trơn Laplace và Gaussian Naive Bayes | [03. Naive_Bayes](03.%20Naive_Bayes/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
 
@@ -39,6 +40,15 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ notebook
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 02
+├── 03. Naive_Bayes/
+│   ├── baitap03/             # Sáu bài tập Python độc lập
+│   ├── code/                 # Notebook và năm phần thực hành
+│   ├── data/                 # Dữ liệu tin nhắn và sinh viên
+│   ├── figures/              # Hình ảnh phát sinh khi chạy bài
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ chương trình
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 03
 ├── .gitignore
 └── README.md
 ```
