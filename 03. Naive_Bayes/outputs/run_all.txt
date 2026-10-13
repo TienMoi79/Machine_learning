@@ -1,0 +1,170 @@
+
+===== code\d1_bayes_tay.py =====
+=== Ví dụ xét nghiệm bệnh ===
+P(Bệnh | Dương tính) = 0.5000
+
+=== Ảnh hưởng của xác suất tiên nghiệm ===
+P(Bệnh) = 0.001 -> P(Bệnh | Dương tính) = 0.0902
+P(Bệnh) = 0.010 -> P(Bệnh | Dương tính) = 0.5000
+P(Bệnh) = 0.050 -> P(Bệnh | Dương tính) = 0.8390
+P(Bệnh) = 0.100 -> P(Bệnh | Dương tính) = 0.9167
+P(Bệnh) = 0.500 -> P(Bệnh | Dương tính) = 0.9900
+
+=== Ví dụ dây chuyền sản xuất ===
+P(Dây chuyền B | Sản phẩm lỗi) = 0.5556
+Kiểm tra trên 1000 sản phẩm: B có 10/18 sản phẩm lỗi
+
+===== code\d2_tui_tu.py =====
+=== Thông tin dữ liệu ===
+Kích thước: (300, 2)
+Số lượng từng lớp:
+la_rac
+0    180
+1    120
+Tỷ lệ thư rác: 0.4000
+
+=== Túi từ ===
+Kích thước ma trận X: (300, 40)
+Số từ trong từ điển: 40
+
+10 từ xuất hiện nhiều nhất ở lớp thường:
+  thầy             74
+  bài              73
+  cáo              72
+  chiều            68
+  ạ                65
+  tài              64
+  tập              63
+  gửi              61
+  lớp              60
+  nhóm             58
+
+10 từ xuất hiện nhiều nhất ở lớp rác:
+  tay              48
+  ngay             47
+  nhanh            44
+  chót             43
+  lúc              42
+  giảm             42
+  quà              41
+  phí              40
+  click            40
+  miễn             39
+
+===== code\d3_loc_thu_rac.py =====
+=== Kết quả trên tập kiểm tra ===
+Tập huấn luyện: 225 mẫu
+Tập kiểm tra:   75 mẫu
+Ma trận nhầm lẫn:
+[[45  0]
+ [ 4 26]]
+Accuracy : 0.9467
+Precision: 1.0000
+Recall   : 0.8667
+
+=== Dự đoán tin nhắn mới ===
+'trung thuong khuyen mai nhanh tay click ngay': P(rác) = 0.9992 -> rác
+'hop nhom bao cao chieu mai phong 305': P(rác) = 0.0983 -> thường
+'ban gui giup em tai lieu bai tap nhe': P(rác) = 0.0719 -> thường
+
+===== code\d4_lam_tron.py =====
+Số từ trong từ điển: 18
+Tin nhắn cần phân loại: 'trung thuong bai tap'
+
+alpha = 0
+Điểm lớp rác   : 0.0000000000
+Điểm lớp thường: 0.0000000000
+Dự đoán: thường
+
+alpha = 1
+Điểm lớp rác   : 0.0000073212
+Điểm lớp thường: 0.0000021656
+Dự đoán: rác
+
+Khi alpha = 0, một từ chưa từng xuất hiện làm cả tích xác suất bằng 0.
+Làm trơn Laplace (alpha = 1) giúp mọi từ có xác suất khác 0.
+
+===== code\d5_gaussian.py =====
+=== So sánh độ chính xác ===
+GaussianNB         : 0.9000
+LogisticRegression : 0.9000
+
+=== Tham số GaussianNB học được ===
+Lớp 0: mean(gio_on, diem_giua_ky) = (8.18, 3.99), std = (5.29, 1.92), prior = 0.4111
+Lớp 1: mean(gio_on, diem_giua_ky) = (20.03, 6.70), std = (5.81, 1.50), prior = 0.5889
+
+=== Dự đoán sinh viên mới ===
+( 5, 4) -> P(qua môn) = 0.0137
+(13, 6) -> P(qua môn) = 0.6550
+(20, 7) -> P(qua môn) = 0.9855
+(28, 9) -> P(qua môn) = 0.9999
+
+===== baitap03\bai1.py =====
+P(qua môn) = 0.7450
+P(Nhóm 1 | qua môn) = 0.6376
+P(Nhóm 2 | qua môn) = 0.2819
+P(Nhóm 3 | qua môn) = 0.0805
+Tổng ba xác suất hậu nghiệm = 1.0000
+Giải thích: nhóm 1 chiếm tỷ lệ ban đầu lớn và có xác suất qua môn cao nhất,
+nên một sinh viên đã qua môn có khả năng thuộc nhóm 1 cao nhất.
+
+===== baitap03\bai2.py =====
+5 từ gợi ý thư rác mạnh nhất:
+  mãi              log-ratio = 3.2034
+  tay              log-ratio = 2.9056
+  ngay             log-ratio = 2.6618
+  miễn             log-ratio = 2.4795
+  trúng            log-ratio = 2.3742
+
+5 từ gợi ý tin thường mạnh nhất:
+  lớp              log-ratio = -2.6122
+  em               log-ratio = -2.5618
+  bài              log-ratio = -2.2946
+  báo              log-ratio = -2.2741
+  phòng            log-ratio = -2.2741
+
+Log-ratio dương lớn nghiêng về lớp rác; âm lớn về độ lớn nghiêng về lớp thường.
+
+===== baitap03\bai3.py =====
+   alpha   accuracy  precision     recall
+   0.001     0.9467     1.0000     0.8667
+     0.1     0.9467     1.0000     0.8667
+       1     0.9467     1.0000     0.8667
+      10     0.9467     1.0000     0.8667
+     100     0.9467     1.0000     0.8667
+
+Alpha quá lớn kéo xác suất của các từ về gần nhau, làm giảm sức phân biệt của mô hình.
+
+===== baitap03\bai4.py =====
+Số từ học từ tập train: 40
+Accuracy tự cài đặt: 0.9467
+Accuracy sklearn   : 0.9467
+Số dự đoán giống nhau: 75/75
+
+Dùng log giúp biến phép nhân nhiều xác suất nhỏ thành phép cộng,
+tránh hiện tượng số quá nhỏ bị làm tròn về 0 (underflow).
+
+===== baitap03\bai5.py =====
+Accuracy MultinomialNB: 0.8000
+Accuracy GaussianNB   : 0.9000
+
+GaussianNB phù hợp hơn vì giờ ôn và điểm giữa kỳ là biến liên tục.
+MultinomialNB được thiết kế cho số đếm/rời rạc, nên giả định của nó không phù hợp ở đây.
+
+===== baitap03\bai6.py =====
+Phân bố dữ liệu mất cân bằng:
+la_rac
+0    180
+1     20
+
+Ma trận nhầm lẫn:
+[[45  0]
+ [ 1  4]]
+Accuracy      : 0.9800
+Spam precision: 1.0000
+Spam recall   : 0.8000
+
+Accuracy có thể vẫn cao vì lớp thường chiếm đa số.
+Spam recall quan trọng hơn để biết mô hình đã bỏ sót bao nhiêu tin rác.
+
+Hoàn tất 11 chương trình.
