@@ -1,0 +1,71 @@
+--- Bước 1 - Khoảng cách và láng giềng ---
+Khoảng cách KHI CHƯA chuẩn hóa
+  d(A, B) =    102.2
+  d(A, C) =   3000.0
+
+Độ lệch chuẩn của ba cột:
+  gio_on 7.82  diem_giua_ky 2.09  chi_tieu 1692
+
+Khoảng cách SAU KHI chuẩn hóa
+  d(A, B) = 3.85
+  d(A, C) = 1.79
+
+Bạn mới: ôn 12 giờ, điểm giữa kỳ 6.5
+Năm láng giềng gần nhất:
+  giờ  10.5  điểm  6.4  khoảng cách 0.198 -> qua
+  giờ  12.5  điểm  6.1  khoảng cách 0.202 -> qua
+  giờ  14.0  điểm  6.4  khoảng cách 0.260 -> qua
+  giờ   9.5  điểm  6.1  khoảng cách 0.373 -> rớt
+  giờ  10.5  điểm  5.8  khoảng cách 0.386 -> qua
+Bỏ phiếu: 4 qua, 1 rớt
+Dự đoán: qua môn
+
+--- Bước 2 - Chuẩn hóa dữ liệu ---
+Đoán bừa cả lớp qua              : 0.6000
+Ba cột, không chuẩn hóa          : 0.5333
+Ba cột, có chuẩn hóa             : 0.8667
+Bỏ cột chi_tieu, có chuẩn hóa    : 0.9000
+
+--- Bước 3 - Chọn số láng giềng k ---
+Accuracy trên tập học và tập kiểm tra theo k
+   k    tập học   tập kiểm tra
+   1     1.0000         0.8000
+   5     0.8756         0.9067
+  13     0.8844         0.9200
+  31     0.8667         0.8933
+ 101     0.8311         0.8533
+
+Kiểm định chéo 5 phần trên tập học:
+k =  1  điểm trung bình 0.7778
+k =  5  điểm trung bình 0.8444
+k =  9  điểm trung bình 0.8444
+k = 13  điểm trung bình 0.8667 <- tốt nhất
+k = 17  điểm trung bình 0.8533
+k = 25  điểm trung bình 0.8622
+k = 51  điểm trung bình 0.8533
+
+k tốt nhất = 13
+Accuracy trên tập kiểm tra = 0.9200
+
+--- Bước 4 - So sánh các mô hình ---
+Accuracy trên tập kiểm tra, bộ hai vầng trăng
+  Hồi quy logistic  : 0.8533
+  Naive Bayes       : 0.8533
+  KNN, k = 13       : 0.9200
+
+KNN phù hợp hơn vì có thể tạo biên quyết định cong theo hình dạng dữ liệu.
+
+--- Bước 5 - KNN cho hồi quy ---
+MAE trên tập kiểm tra (tỷ đồng)
+  KNN, k = 5 : 0.4030
+  Đường thẳng : 0.2578
+
+Dự đoán cho bốn căn mới (tỷ đồng)
+ diện tích      KNN  đường thẳng
+     60 m2     4.95         5.12
+    100 m2     8.32         8.24
+    150 m2     9.32        12.13
+    250 m2     9.32        19.91
+
+Năm láng giềng của căn 250 m2: 117.5, 115.9, 111.7, 111.2, 104.2
+KNN không ngoại suy: ngoài vùng dữ liệu, nó vẫn dùng các căn lớn nhất đã thấy.

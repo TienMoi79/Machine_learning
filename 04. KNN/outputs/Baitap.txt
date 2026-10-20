@@ -1,0 +1,76 @@
+--- Bài 1 ---
+Accuracy KNN tự viết : 0.9200
+Accuracy sklearn     : 0.9200
+Số dự đoán giống nhau: 75/75
+
+Giải thích:
+- Với từng mẫu kiểm tra, hàm tính khoảng cách Euclid đến mọi mẫu học.
+- np.argsort lấy 13 khoảng cách nhỏ nhất; np.bincount đếm phiếu từng lớp.
+- Lớp có nhiều phiếu nhất là dự đoán. Quy trình này giống KNeighborsClassifier,
+  nên hai mô hình cho cùng 75/75 dự đoán và cùng accuracy.
+
+--- Bài 2 ---
+Khoảng cách    k tốt nhất       CV     test
+Euclid                 13   0.8667   0.9200
+Manhattan              27   0.8667   0.9067
+
+Nhận xét: Manhattan chọn k = 27 thay vì 13 và accuracy kiểm tra thay đổi -0.0133. Mức chênh lệch nhỏ, nên đổi khoảng cách không làm kết quả khác nhiều.
+
+--- Bài 3 ---
+Không chuẩn hóa:
+  Chi tiêu tính bằng nghìn đồng: 0.5333
+  Chi tiêu tính bằng triệu đồng: 0.8667
+Có chuẩn hóa:
+  Chi tiêu tính bằng nghìn đồng: 0.8667
+  Chi tiêu tính bằng triệu đồng: 0.8667
+
+Giải thích: khi chưa chuẩn hóa, đổi đơn vị làm thay đổi độ lớn của cột chi tiêu
+và vì thế làm thay đổi khoảng cách. Sau chuẩn hóa, hai cách ghi đơn vị tương đương.
+
+--- Bài 4 ---
+   k    uniform   distance
+   1     0.8000     0.8000
+  13     0.9200     0.9333
+ 101     0.8533     0.9067
+
+Với k lớn, trọng số khoảng cách giúp các điểm gần có tiếng nói mạnh hơn,
+nên giảm tác động làm trơn quá mức của nhiều láng giềng ở xa.
+
+--- Bài 5 ---
+MAE kiểm định chéo theo k:
+  k =  1: 0.4164
+  k =  2: 0.3498 <- tốt nhất
+  k =  3: 0.3714
+  k =  4: 0.3618
+  k =  5: 0.3816
+  k =  6: 0.4002
+  k =  7: 0.3990
+  k =  8: 0.4098
+  k =  9: 0.4171
+  k = 10: 0.4365
+  k = 11: 0.4500
+  k = 12: 0.4695
+  k = 13: 0.4992
+  k = 14: 0.5153
+  k = 15: 0.5290
+  k = 16: 0.5595
+  k = 17: 0.5748
+  k = 18: 0.5891
+  k = 19: 0.6130
+  k = 20: 0.6254
+
+k tốt nhất = 2
+MAE KNN trên tập kiểm tra       : 0.4867
+MAE đường thẳng trên tập kiểm tra: 0.2578
+KNN chưa vượt đường thẳng vì quan hệ giá và diện tích gần tuyến tính.
+
+--- Bài 6 ---
+  Số mẫu học   fit (giây)    predict 1000 TB (giây)
+        1000     0.000476                  0.036480
+       10000     0.001325                  0.042274
+      100000     0.008135                  0.283913
+
+KNN được gọi là học lười vì fit chủ yếu chỉ lưu dữ liệu nên rất nhanh.
+Khi predict, mô hình phải tìm hàng xóm trong tập học; dữ liệu càng lớn thì dự đoán càng lâu.
+Hai cỡ nhỏ có thể gần nhau do chi phí khởi động; cỡ 100000 cho thấy chi phí dự đoán tăng rõ.
+Thời gian cụ thể có thể khác nhau giữa các máy, cần so sánh xu hướng tương đối.

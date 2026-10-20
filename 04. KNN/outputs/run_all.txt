@@ -1,0 +1,151 @@
+
+===== code\e1_khoang_cach.py =====
+Khoảng cách KHI CHƯA chuẩn hóa
+  d(A, B) =    102.2
+  d(A, C) =   3000.0
+
+Độ lệch chuẩn của ba cột:
+  gio_on 7.82  diem_giua_ky 2.09  chi_tieu 1692
+
+Khoảng cách SAU KHI chuẩn hóa
+  d(A, B) = 3.85
+  d(A, C) = 1.79
+
+Bạn mới: ôn 12 giờ, điểm giữa kỳ 6.5
+Năm láng giềng gần nhất:
+  giờ  10.5  điểm  6.4  khoảng cách 0.198 -> qua
+  giờ  12.5  điểm  6.1  khoảng cách 0.202 -> qua
+  giờ  14.0  điểm  6.4  khoảng cách 0.260 -> qua
+  giờ   9.5  điểm  6.1  khoảng cách 0.373 -> rớt
+  giờ  10.5  điểm  5.8  khoảng cách 0.386 -> qua
+Bỏ phiếu: 4 qua, 1 rớt
+Dự đoán: qua môn
+
+===== code\e2_chuan_hoa.py =====
+Đoán bừa cả lớp qua              : 0.6000
+Ba cột, không chuẩn hóa          : 0.5333
+Ba cột, có chuẩn hóa             : 0.8667
+Bỏ cột chi_tieu, có chuẩn hóa    : 0.9000
+
+===== code\e3_chon_k.py =====
+Accuracy trên tập học và tập kiểm tra theo k
+   k    tập học   tập kiểm tra
+   1     1.0000         0.8000
+   5     0.8756         0.9067
+  13     0.8844         0.9200
+  31     0.8667         0.8933
+ 101     0.8311         0.8533
+
+Kiểm định chéo 5 phần trên tập học:
+k =  1  điểm trung bình 0.7778
+k =  5  điểm trung bình 0.8444
+k =  9  điểm trung bình 0.8444
+k = 13  điểm trung bình 0.8667 <- tốt nhất
+k = 17  điểm trung bình 0.8533
+k = 25  điểm trung bình 0.8622
+k = 51  điểm trung bình 0.8533
+
+k tốt nhất = 13
+Accuracy trên tập kiểm tra = 0.9200
+
+===== code\e4_so_sanh.py =====
+Accuracy trên tập kiểm tra, bộ hai vầng trăng
+  Hồi quy logistic  : 0.8533
+  Naive Bayes       : 0.8533
+  KNN, k = 13       : 0.9200
+
+KNN phù hợp hơn vì có thể tạo biên quyết định cong theo hình dạng dữ liệu.
+
+===== code\e5_knn_hoi_quy.py =====
+MAE trên tập kiểm tra (tỷ đồng)
+  KNN, k = 5 : 0.4030
+  Đường thẳng : 0.2578
+
+Dự đoán cho bốn căn mới (tỷ đồng)
+ diện tích      KNN  đường thẳng
+     60 m2     4.95         5.12
+    100 m2     8.32         8.24
+    150 m2     9.32        12.13
+    250 m2     9.32        19.91
+
+Năm láng giềng của căn 250 m2: 117.5, 115.9, 111.7, 111.2, 104.2
+KNN không ngoại suy: ngoài vùng dữ liệu, nó vẫn dùng các căn lớn nhất đã thấy.
+
+===== baitap04\bai1.py =====
+Accuracy KNN tự viết : 0.9200
+Accuracy sklearn     : 0.9200
+Số dự đoán giống nhau: 75/75
+
+Giải thích:
+- Với từng mẫu kiểm tra, hàm tính khoảng cách Euclid đến mọi mẫu học.
+- np.argsort lấy 13 khoảng cách nhỏ nhất; np.bincount đếm phiếu từng lớp.
+- Lớp có nhiều phiếu nhất là dự đoán. Quy trình này giống KNeighborsClassifier,
+  nên hai mô hình cho cùng 75/75 dự đoán và cùng accuracy.
+
+===== baitap04\bai2.py =====
+Khoảng cách    k tốt nhất       CV     test
+Euclid                 13   0.8667   0.9200
+Manhattan              27   0.8667   0.9067
+
+Nhận xét: Manhattan chọn k = 27 thay vì 13 và accuracy kiểm tra thay đổi -0.0133. Mức chênh lệch nhỏ, nên đổi khoảng cách không làm kết quả khác nhiều.
+
+===== baitap04\bai3.py =====
+Không chuẩn hóa:
+  Chi tiêu tính bằng nghìn đồng: 0.5333
+  Chi tiêu tính bằng triệu đồng: 0.8667
+Có chuẩn hóa:
+  Chi tiêu tính bằng nghìn đồng: 0.8667
+  Chi tiêu tính bằng triệu đồng: 0.8667
+
+Giải thích: khi chưa chuẩn hóa, đổi đơn vị làm thay đổi độ lớn của cột chi tiêu
+và vì thế làm thay đổi khoảng cách. Sau chuẩn hóa, hai cách ghi đơn vị tương đương.
+
+===== baitap04\bai4.py =====
+   k    uniform   distance
+   1     0.8000     0.8000
+  13     0.9200     0.9333
+ 101     0.8533     0.9067
+
+Với k lớn, trọng số khoảng cách giúp các điểm gần có tiếng nói mạnh hơn,
+nên giảm tác động làm trơn quá mức của nhiều láng giềng ở xa.
+
+===== baitap04\bai5.py =====
+MAE kiểm định chéo theo k:
+  k =  1: 0.4164
+  k =  2: 0.3498 <- tốt nhất
+  k =  3: 0.3714
+  k =  4: 0.3618
+  k =  5: 0.3816
+  k =  6: 0.4002
+  k =  7: 0.3990
+  k =  8: 0.4098
+  k =  9: 0.4171
+  k = 10: 0.4365
+  k = 11: 0.4500
+  k = 12: 0.4695
+  k = 13: 0.4992
+  k = 14: 0.5153
+  k = 15: 0.5290
+  k = 16: 0.5595
+  k = 17: 0.5748
+  k = 18: 0.5891
+  k = 19: 0.6130
+  k = 20: 0.6254
+
+k tốt nhất = 2
+MAE KNN trên tập kiểm tra       : 0.4867
+MAE đường thẳng trên tập kiểm tra: 0.2578
+KNN chưa vượt đường thẳng vì quan hệ giá và diện tích gần tuyến tính.
+
+===== baitap04\bai6.py =====
+  Số mẫu học   fit (giây)    predict 1000 TB (giây)
+        1000     0.000478                  0.028087
+       10000     0.001196                  0.028330
+      100000     0.005683                  0.236148
+
+KNN được gọi là học lười vì fit chủ yếu chỉ lưu dữ liệu nên rất nhanh.
+Khi predict, mô hình phải tìm hàng xóm trong tập học; dữ liệu càng lớn thì dự đoán càng lâu.
+Hai cỡ nhỏ có thể gần nhau do chi phí khởi động; cỡ 100000 cho thấy chi phí dự đoán tăng rõ.
+Thời gian cụ thể có thể khác nhau giữa các máy, cần so sánh xu hướng tương đối.
+
+Hoàn tất 11 chương trình.
