@@ -18,6 +18,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 | 02 | Hồi quy logistic: sigmoid, phân loại nhị phân, ma trận nhầm lẫn, các thước đo đánh giá, ngưỡng quyết định và mô hình nhiều biến | [02. Logistic_Regression](02.%20Logistic_Regression/) |
 | 03 | Naive Bayes: định lý Bayes, mô hình túi từ, lọc tin nhắn rác, làm trơn Laplace và Gaussian Naive Bayes | [03. Naive_Bayes](03.%20Naive_Bayes/) |
 | 04 | K láng giềng gần nhất: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, phân loại và hồi quy KNN | [04. KNN](04.%20KNN/) |
+| 05 | Cây quyết định và Rừng ngẫu nhiên: Gini, cắt tỉa cây, Random Forest, độ quan trọng đặc trưng và hồi quy | [05. DecisionTree_RandomForest](05.%20DecisionTree_RandomForest/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
 
@@ -59,6 +60,15 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ chương trình
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 04
+├── 05. DecisionTree_RandomForest/
+│   ├── baitap05/             # Sáu bài tập Python độc lập
+│   ├── code/                 # Notebook và bảy phần thực hành
+│   ├── data/                 # Dữ liệu khách vay và giá nhà
+│   ├── figures/              # Hình cây quyết định được tạo khi chạy bài
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ chương trình
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 05
 ├── .gitignore
 └── README.md
 ```
