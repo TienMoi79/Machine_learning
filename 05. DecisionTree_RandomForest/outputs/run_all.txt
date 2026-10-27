@@ -1,0 +1,259 @@
+
+===== code\f1_gini.py =====
+Gini của nút gốc: 0.4800
+
+Câu hỏi 'thu_nhap <= ngưỡng?'
+  ngưỡng   Gini sau chia    Gini giảm
+     7.0          0.4000       0.0800
+     8.5          0.4750       0.0050
+    10.0          0.4190       0.0610
+    12.0          0.3167       0.1633
+    14.0          0.4000       0.0800
+    16.5          0.4500       0.0300
+    19.0          0.3429       0.1371
+    22.5          0.4000       0.0800
+    27.5          0.4444       0.0356
+
+Câu hỏi 'có việc ổn định?'
+Gini sau chia 0.4190, Gini giảm 0.0610
+
+Cây một tầng do scikit-learn chọn:
+|--- thu_nhap <= 12.00
+|   |--- weights: [3.00, 1.00] class: 0
+|--- thu_nhap >  12.00
+|   |--- weights: [1.00, 5.00] class: 1
+
+
+===== code\f2_cay_nam_la.py =====
+Kích thước bảng: (600, 5)
+   thu_nhap  ty_le_no  co_viec_on_dinh  so_nguoi_phu_thuoc  tra_dung_han
+0       9.4      0.18                0                   4             0
+1      15.8      0.70                0                   2             1
+2       6.1      0.79                0                   0             0
+3      19.4      1.13                1                   4             0
+4      24.8      0.33                1                   0             1
+
+Tỷ lệ khách trả đúng hạn: 0.49
+
+Độ sâu 3, số lá 5
+|--- thu_nhap <= 15.050
+|   |--- ty_le_no <= 0.615
+|   |   |--- co_viec_on_dinh <= 0.500
+|   |   |   |--- weights: [33.000, 6.000] class: 0
+|   |   |--- co_viec_on_dinh >  0.500
+|   |   |   |--- weights: [35.000, 47.000] class: 1
+|   |--- ty_le_no >  0.615
+|   |   |--- weights: [114.000, 14.000] class: 0
+|--- thu_nhap >  15.050
+|   |--- ty_le_no <= 1.020
+|   |   |--- weights: [27.000, 145.000] class: 1
+|   |--- ty_le_no >  1.020
+|   |   |--- weights: [20.000, 9.000] class: 0
+
+Accuracy tập học     : 0.7978
+Accuracy tập kiểm tra: 0.7467
+
+Khách 1: đúng hạn, xác suất đúng hạn 0.84
+Khách 2: trễ hạn, xác suất đúng hạn 0.15
+
+===== code\f3_do_sau.py =====
+Cây mọc tự do
+  độ sâu 13, số lá 92
+  tập học 1.0000
+  tập kiểm tra 0.7667
+
+  độ sâu    tập học  kiểm định chéo
+       1     0.7467          0.7244
+       2     0.7711          0.7378
+       3     0.8000          0.7511
+       4     0.8644          0.8089
+       5     0.8978          0.8333
+       6     0.9133          0.8156
+       7     0.9400          0.8067
+       8     0.9600          0.7733
+       9     0.9800          0.7800
+      10     0.9911          0.7822
+      11     0.9933          0.7756
+      12     0.9978          0.7778
+      13     1.0000          0.7733
+      14     1.0000          0.7733
+      15     1.0000          0.7733
+
+Độ sâu tốt nhất = 5, cây có 27 lá
+Accuracy trên tập kiểm tra = 0.8533
+
+===== code\f4_khong_chuan_hoa.py =====
+Accuracy trên tập kiểm tra
+  dữ liệu gốc          : 0.8533
+  đã chuẩn hóa         : 0.8533
+  thu nhập nghìn đồng  : 0.8533
+
+Số khách bị đoán khác cây gốc
+  đã chuẩn hóa         : 0
+  thu nhập nghìn đồng  : 0
+
+Ngưỡng của câu hỏi gốc
+  dữ liệu gốc          : 15.05
+  thu nhập nghìn đồng  : 15050.00
+
+===== code\f5_rung.py =====
+Bốc 450 lần, có 286 khách khác nhau (64%)
+
+Rừng 200 cây
+  tập học     : 1.0000
+  tập kiểm tra: 0.9000
+
+Số cây và accuracy tập kiểm tra
+     1: 0.7933
+    10: 0.8467
+    50: 0.8733
+   200: 0.9000
+   400: 0.9000
+
+Mô hình          tập học  tập kiểm tra
+Cây mọc tự do    1.0000    0.7667
+Cây sâu 5        0.8978    0.8533
+Rừng 200 cây     1.0000    0.9000
+
+===== code\f6_do_quan_trong.py =====
+Độ quan trọng, bốn cột thật
+thu_nhap              0.479
+ty_le_no              0.339
+so_nguoi_phu_thuoc    0.093
+co_viec_on_dinh       0.088
+Tổng: 1.0
+
+Độ quan trọng khi thêm một cột ngẫu nhiên
+thu_nhap              0.427
+ty_le_no              0.270
+so_ngau_nhien         0.150
+co_viec_on_dinh       0.077
+so_nguoi_phu_thuoc    0.076
+
+===== code\f7_cay_hoi_quy.py =====
+Cây hồi quy sâu 3 có 8 lá
+|--- dien_tich <= 73.9
+|   |--- dien_tich <= 64.7
+|   |   |--- dien_tich <= 50.5
+|   |   |   |--- value: [4.2]
+|   |   |--- dien_tich >  50.5
+|   |   |   |--- value: [4.9]
+|   |--- dien_tich >  64.7
+|   |   |--- dien_tich <= 68.5
+|   |   |   |--- value: [5.3]
+|   |   |--- dien_tich >  68.5
+|   |   |   |--- value: [5.9]
+|--- dien_tich >  73.9
+|   |--- dien_tich <= 93.8
+|   |   |--- dien_tich <= 82.5
+|   |   |   |--- value: [6.8]
+|   |   |--- dien_tich >  82.5
+|   |   |   |--- value: [7.4]
+|   |--- dien_tich >  93.8
+|   |   |--- dien_tich <= 107.7
+|   |   |   |--- value: [8.3]
+|   |   |--- dien_tich >  107.7
+|   |   |   |--- value: [9.4]
+
+MAE trên tập kiểm tra (tỷ đồng)
+  Cây sâu 3   : 0.5039
+  Đường thẳng : 0.2578
+
+Dự đoán cho bốn căn mới (tỷ đồng)
+ diện tích      cây  đường thẳng
+     60 m2     4.92         5.12
+    100 m2     8.32         8.24
+    150 m2     9.40        12.13
+    250 m2     9.40        19.91
+
+Cây không ngoại suy: các diện tích vượt ngưỡng cuối cùng đều rơi vào cùng một lá.
+
+===== baitap05\bai1.py =====
+Đã lưu: figures/cay_nam_la.png
+Đã lưu: figures/cay_sau_2.png
+
+Cây sâu 2:
+|--- thu_nhap <= 15.050
+|   |--- ty_le_no <= 0.615
+|   |   |--- weights: [68.000, 53.000] class: 0
+|   |--- ty_le_no >  0.615
+|   |   |--- weights: [114.000, 14.000] class: 0
+|--- thu_nhap >  15.050
+|   |--- ty_le_no <= 1.020
+|   |   |--- weights: [27.000, 145.000] class: 1
+|   |--- ty_le_no >  1.020
+|   |   |--- weights: [20.000, 9.000] class: 0
+
+Nhận xét: hai lá bên trái đều dự đoán trễ hạn (lớp 0).
+Cây vẫn chia vì hai nhóm có tỷ lệ đúng/trễ hạn và độ thuần khác nhau;
+phép chia làm giảm Gini dù lớp chiếm đa số của cả hai lá vẫn giống nhau.
+
+===== baitap05\bai2.py =====
+Cột tốt nhất       : thu_nhap
+Ngưỡng tốt nhất    : 15.050
+Gini sau chia      : 0.3777
+Mức Gini giảm      : 0.1221
+
+Giải thích:
+- Với mỗi cột, hàm sắp xếp các giá trị khác nhau và thử ngưỡng ở chính giữa
+  từng cặp giá trị liên tiếp. Các ngưỡng nằm trong cùng một khoảng chia dữ liệu như nhau.
+- Mỗi câu hỏi được chấm bằng Gini trung bình có trọng số của hai nhánh.
+- Câu hỏi làm Gini giảm nhiều nhất là thu_nhap <= 15.05, trùng câu hỏi gốc
+  của cây scikit-learn trong bài thực hành.
+
+===== baitap05\bai3.py =====
+Tiêu chí     độ sâu         CV       test
+Gini              5     0.8333     0.8533
+Entropy           5     0.8222     0.8467
+
+Nhận xét: đổi sang entropy làm accuracy kiểm tra thay đổi -0.0067; mức thay đổi này không lớn.
+
+===== baitap05\bai4.py =====
+  min_samples_leaf  CV trung bình
+                 1         0.7733
+                 2         0.7822
+                 5         0.8067
+                10         0.8089
+                20         0.8089
+                40         0.7133
+
+Giá trị có điểm CV cao nhất: 10, 20
+Chọn min_samples_leaf = 10 (giá trị nhỏ hơn khi hòa điểm)
+Accuracy cách cắt theo số khách ở lá: 0.8467
+Accuracy cây sâu tối đa 5          : 0.8533
+Giới hạn max_depth=5 tốt hơn trên tập kiểm tra của bộ dữ liệu này.
+
+===== baitap05\bai5.py =====
+Độ quan trọng do giảm Gini (feature_importances_):
+thu_nhap              0.4269
+ty_le_no              0.2696
+so_ngau_nhien         0.1499
+co_viec_on_dinh       0.0773
+so_nguoi_phu_thuoc    0.0764
+
+Độ quan trọng xáo trộn trung bình trên tập kiểm tra:
+thu_nhap              0.3073
+ty_le_no              0.1993
+co_viec_on_dinh       0.1117
+so_nguoi_phu_thuoc    0.0497
+so_ngau_nhien         0.0017
+
+Cột ngẫu nhiên xếp thứ 3 theo giảm Gini.
+Cột ngẫu nhiên xếp thứ 5 theo permutation importance.
+Giải thích: feature_importances_ thiên vị cột có nhiều giá trị vì cây có nhiều ngưỡng
+để thử và dễ tìm được phép chia tình cờ tốt trên tập học. Permutation importance đo trên
+tập kiểm tra: xáo trộn cột vô dụng hầu như không làm accuracy giảm, nên thứ hạng thấp hơn.
+Độ quan trọng chỉ cho biết mô hình sử dụng cột, không chứng minh quan hệ nhân quả.
+
+===== baitap05\bai6.py =====
+MAE trên tập kiểm tra (tỷ đồng)
+  Rừng 200 cây: 0.4559
+  Cây sâu 3   : 0.5039
+  Đường thẳng : 0.2578
+
+Dự đoán của rừng cho căn 250 m2: 9.1973 tỷ đồng
+Rừng không ngoại suy được. Mỗi cây đưa căn 250 m2 tới một lá cuối và dự đoán bằng
+trung bình giá các căn tập học trong lá đó; rừng chỉ lấy trung bình các dự đoán của 200 cây.
+Vì vậy dự đoán vẫn bị giới hạn bởi các mức giá đã xuất hiện trong tập học.
+
+Hoàn tất 13 chương trình.

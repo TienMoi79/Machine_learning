@@ -1,0 +1,87 @@
+--- Bài 1 ---
+Đã lưu: figures/cay_nam_la.png
+Đã lưu: figures/cay_sau_2.png
+
+Cây sâu 2:
+|--- thu_nhap <= 15.050
+|   |--- ty_le_no <= 0.615
+|   |   |--- weights: [68.000, 53.000] class: 0
+|   |--- ty_le_no >  0.615
+|   |   |--- weights: [114.000, 14.000] class: 0
+|--- thu_nhap >  15.050
+|   |--- ty_le_no <= 1.020
+|   |   |--- weights: [27.000, 145.000] class: 1
+|   |--- ty_le_no >  1.020
+|   |   |--- weights: [20.000, 9.000] class: 0
+
+Nhận xét: hai lá bên trái đều dự đoán trễ hạn (lớp 0).
+Cây vẫn chia vì hai nhóm có tỷ lệ đúng/trễ hạn và độ thuần khác nhau;
+phép chia làm giảm Gini dù lớp chiếm đa số của cả hai lá vẫn giống nhau.
+
+--- Bài 2 ---
+Cột tốt nhất       : thu_nhap
+Ngưỡng tốt nhất    : 15.050
+Gini sau chia      : 0.3777
+Mức Gini giảm      : 0.1221
+
+Giải thích:
+- Với mỗi cột, hàm sắp xếp các giá trị khác nhau và thử ngưỡng ở chính giữa
+  từng cặp giá trị liên tiếp. Các ngưỡng nằm trong cùng một khoảng chia dữ liệu như nhau.
+- Mỗi câu hỏi được chấm bằng Gini trung bình có trọng số của hai nhánh.
+- Câu hỏi làm Gini giảm nhiều nhất là thu_nhap <= 15.05, trùng câu hỏi gốc
+  của cây scikit-learn trong bài thực hành.
+
+--- Bài 3 ---
+Tiêu chí     độ sâu         CV       test
+Gini              5     0.8333     0.8533
+Entropy           5     0.8222     0.8467
+
+Nhận xét: đổi sang entropy làm accuracy kiểm tra thay đổi -0.0067; mức thay đổi này không lớn.
+
+--- Bài 4 ---
+  min_samples_leaf  CV trung bình
+                 1         0.7733
+                 2         0.7822
+                 5         0.8067
+                10         0.8089
+                20         0.8089
+                40         0.7133
+
+Giá trị có điểm CV cao nhất: 10, 20
+Chọn min_samples_leaf = 10 (giá trị nhỏ hơn khi hòa điểm)
+Accuracy cách cắt theo số khách ở lá: 0.8467
+Accuracy cây sâu tối đa 5          : 0.8533
+Giới hạn max_depth=5 tốt hơn trên tập kiểm tra của bộ dữ liệu này.
+
+--- Bài 5 ---
+Độ quan trọng do giảm Gini (feature_importances_):
+thu_nhap              0.4269
+ty_le_no              0.2696
+so_ngau_nhien         0.1499
+co_viec_on_dinh       0.0773
+so_nguoi_phu_thuoc    0.0764
+
+Độ quan trọng xáo trộn trung bình trên tập kiểm tra:
+thu_nhap              0.3073
+ty_le_no              0.1993
+co_viec_on_dinh       0.1117
+so_nguoi_phu_thuoc    0.0497
+so_ngau_nhien         0.0017
+
+Cột ngẫu nhiên xếp thứ 3 theo giảm Gini.
+Cột ngẫu nhiên xếp thứ 5 theo permutation importance.
+Giải thích: feature_importances_ thiên vị cột có nhiều giá trị vì cây có nhiều ngưỡng
+để thử và dễ tìm được phép chia tình cờ tốt trên tập học. Permutation importance đo trên
+tập kiểm tra: xáo trộn cột vô dụng hầu như không làm accuracy giảm, nên thứ hạng thấp hơn.
+Độ quan trọng chỉ cho biết mô hình sử dụng cột, không chứng minh quan hệ nhân quả.
+
+--- Bài 6 ---
+MAE trên tập kiểm tra (tỷ đồng)
+  Rừng 200 cây: 0.4559
+  Cây sâu 3   : 0.5039
+  Đường thẳng : 0.2578
+
+Dự đoán của rừng cho căn 250 m2: 9.1973 tỷ đồng
+Rừng không ngoại suy được. Mỗi cây đưa căn 250 m2 tới một lá cuối và dự đoán bằng
+trung bình giá các căn tập học trong lá đó; rừng chỉ lấy trung bình các dự đoán của 200 cây.
+Vì vậy dự đoán vẫn bị giới hạn bởi các mức giá đã xuất hiện trong tập học.
