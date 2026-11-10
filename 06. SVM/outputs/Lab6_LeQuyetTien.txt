@@ -1,0 +1,80 @@
+--- Bước 1 - Đường có lề rộng nhất ---
+w1 = -0.831, w2 = -0.355, b = 4.820
+Do rong cua le = 2 / 0.9039 = 2.2126
+
+So vecto ho tro: 3
+ diem 18: x1 = 5.20, x2 = 4.22, lop 0, f(x) = -1.000
+ diem 10: x1 = 2.88, x2 = 4.02, lop 1, f(x) = +1.000
+ diem 13: x1 = 3.59, x2 = 2.36, lop 1, f(x) = +1.000
+
+|f(x)| nho nhat cua cac diem khac: 1.059
+
+Hoc lai chi voi vecto ho tro:
+ w1 = -0.831, w2 = -0.355, b = 4.821
+
+Diem (3.0, 3.0): f(x) = +1.262, doan lop 1
+Diem (5.0, 4.5): f(x) = -0.933, doan lop 0
+
+--- Bước 2 - Lề mềm, tham số C và chuẩn hóa ---
+Tap hoc co 90 ban
+     C  so vecto HT  do rong le  tap hoc  tap kiem tra
+  0.01           74        3.84   0.8556        0.8667
+   0.1           44        1.70   0.8889        0.9000
+     1           31        1.29   0.8778        0.9000
+    10           28        1.06   0.9000        0.9000
+   100           27        1.05   0.9000        0.9000
+
+Ba cot, kernel RBF mac dinh
+ Doan bua ca lop qua : 0.6000
+ Khong chuan hoa     : 0.6000
+ Co chuan hoa        : 0.9000
+
+--- Bước 3 - Nâng chiều và kernel ---
+Mot nguong tren truc x, tot nhat dung 0.7143
+Them cot x^2, SVM tuyen tinh dung 1.0000
+
+Hai vang trang, accuracy tren tap kiem tra
+ SVM kernel tuyen tinh      0.8667
+ SVM kernel da thuc bac 3   0.8667
+ SVM kernel RBF             0.9200
+ Hoi quy logistic           0.8533
+ KNN, k = 13                0.9200
+
+So vecto ho tro cua kernel RBF: 89 tren 225 diem hoc
+
+--- Bước 4 - Chọn C và gamma ---
+gamma  tap hoc  tap kiem tra  so vecto HT
+  0.1   0.8356       0.8533          113
+    1   0.8711       0.9200          88
+   10   0.8978       0.9067          128
+  100   0.9422       0.8133          217
+
+Diem kiem dinh cheo, hang la C, cot la gamma
+gamma   0.01    0.10    1.00    10.00
+C                                    
+0.1    0.6578  0.8044  0.8444  0.8578
+1.0    0.8044  0.8178  0.8667  0.8667
+10.0   0.8178  0.8400  0.8711  0.8311
+100.0  0.8178  0.8533  0.8711  0.7467
+
+Cap tot nhat: {'C': 10, 'gamma': 1}
+Diem kiem dinh cheo: 0.8711
+Accuracy tren tap kiem tra: 0.9200
+
+--- Bước 5 - Nhận dạng chữ số viết tay ---
+Kich thuoc X: (1797, 64)
+Do sang nho nhat va lon nhat: 0.0 16.0
+So anh moi chu so: [178 182 177 183 181 182 181 179 174 180]
+
+SVM kernel RBF: accuracy 0.9911
+So vecto ho tro: 626 tren 1347 anh
+So anh doan sai: 4 tren 450
+ anh   6: that la 9, doan la 3
+ anh  18: that la 8, doan la 1
+ anh 161: that la 4, doan la 8
+ anh 428: that la 7, doan la 9
+
+Cac mo hinh khac, accuracy tren tap kiem tra
+ SVM co chuan hoa       0.9778
+ KNN, k = 5             0.9867
+ Logistic co chuan hoa  0.9711

@@ -19,6 +19,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 | 03 | Naive Bayes: định lý Bayes, mô hình túi từ, lọc tin nhắn rác, làm trơn Laplace và Gaussian Naive Bayes | [03. Naive_Bayes](03.%20Naive_Bayes/) |
 | 04 | K láng giềng gần nhất: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, phân loại và hồi quy KNN | [04. KNN](04.%20KNN/) |
 | 05 | Cây quyết định và Rừng ngẫu nhiên: Gini, cắt tỉa cây, Random Forest, độ quan trọng đặc trưng và hồi quy | [05. DecisionTree_RandomForest](05.%20DecisionTree_RandomForest/) |
+| 06 | Máy vectơ hỗ trợ: lề rộng nhất, vectơ hỗ trợ, kernel, tham số C và gamma, dò lưới và nhận dạng chữ số viết tay | [06. SVM](06.%20SVM/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
 
@@ -69,6 +70,15 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ chương trình
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 05
+├── 06. SVM/
+│   ├── baitap06/             # Sáu bài tập Python độc lập
+│   ├── code/                 # Hai notebook và năm phần thực hành
+│   ├── data/                 # Dữ liệu sinh viên và hai vầng trăng
+│   ├── figures/              # Hình các chữ số SVM dự đoán sai
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ chương trình
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 06
 ├── .gitignore
 └── README.md
 ```
