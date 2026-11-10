@@ -1,0 +1,201 @@
+
+===== code\g1_le_rong_nhat.py =====
+w1 = -0.831, w2 = -0.355, b = 4.820
+Do rong cua le = 2 / 0.9039 = 2.2126
+
+So vecto ho tro: 3
+ diem 18: x1 = 5.20, x2 = 4.22, lop 0, f(x) = -1.000
+ diem 10: x1 = 2.88, x2 = 4.02, lop 1, f(x) = +1.000
+ diem 13: x1 = 3.59, x2 = 2.36, lop 1, f(x) = +1.000
+
+|f(x)| nho nhat cua cac diem khac: 1.059
+
+Hoc lai chi voi vecto ho tro:
+ w1 = -0.831, w2 = -0.355, b = 4.821
+
+Diem (3.0, 3.0): f(x) = +1.262, doan lop 1
+Diem (5.0, 4.5): f(x) = -0.933, doan lop 0
+
+===== code\g2_tham_so_c.py =====
+Tap hoc co 90 ban
+     C  so vecto HT  do rong le  tap hoc  tap kiem tra
+  0.01           74        3.84   0.8556        0.8667
+   0.1           44        1.70   0.8889        0.9000
+     1           31        1.29   0.8778        0.9000
+    10           28        1.06   0.9000        0.9000
+   100           27        1.05   0.9000        0.9000
+
+Ba cot, kernel RBF mac dinh
+ Doan bua ca lop qua : 0.6000
+ Khong chuan hoa     : 0.6000
+ Co chuan hoa        : 0.9000
+
+===== code\g3_kernel.py =====
+Mot nguong tren truc x, tot nhat dung 0.7143
+Them cot x^2, SVM tuyen tinh dung 1.0000
+
+Hai vang trang, accuracy tren tap kiem tra
+ SVM kernel tuyen tinh      0.8667
+ SVM kernel da thuc bac 3   0.8667
+ SVM kernel RBF             0.9200
+ Hoi quy logistic           0.8533
+ KNN, k = 13                0.9200
+
+So vecto ho tro cua kernel RBF: 89 tren 225 diem hoc
+
+===== code\g4_chon_tham_so.py =====
+gamma  tap hoc  tap kiem tra  so vecto HT
+  0.1   0.8356       0.8533          113
+    1   0.8711       0.9200          88
+   10   0.8978       0.9067          128
+  100   0.9422       0.8133          217
+
+Diem kiem dinh cheo, hang la C, cot la gamma
+gamma   0.01    0.10    1.00    10.00
+C                                    
+0.1    0.6578  0.8044  0.8444  0.8578
+1.0    0.8044  0.8178  0.8667  0.8667
+10.0   0.8178  0.8400  0.8711  0.8311
+100.0  0.8178  0.8533  0.8711  0.7467
+
+Cap tot nhat: {'C': 10, 'gamma': 1}
+Diem kiem dinh cheo: 0.8711
+Accuracy tren tap kiem tra: 0.9200
+
+===== code\g5_chu_so.py =====
+Kich thuoc X: (1797, 64)
+Do sang nho nhat va lon nhat: 0.0 16.0
+So anh moi chu so: [178 182 177 183 181 182 181 179 174 180]
+
+SVM kernel RBF: accuracy 0.9911
+So vecto ho tro: 626 tren 1347 anh
+So anh doan sai: 4 tren 450
+ anh   6: that la 9, doan la 3
+ anh  18: that la 8, doan la 1
+ anh 161: that la 4, doan la 8
+ anh 428: that la 7, doan la 9
+
+Cac mo hinh khac, accuracy tren tap kiem tra
+ SVM co chuan hoa       0.9778
+ KNN, k = 5             0.9867
+ Logistic co chuan hoa  0.9711
+
+===== baitap06\bai1.py =====
+w1 = -0.831357, w2 = -0.354868, b = 4.820361
+||w|| = 0.903928
+
+Hai diem can tinh:
+  (np.float64(3.0), np.float64(3.0)): f(x) = +1.261684, khoang cach = 1.395779
+  (np.float64(5.0), np.float64(4.5)): f(x) = -0.933333, khoang cach = 1.032530
+
+Ba vecto ho tro:
+  diem 18 (np.float64(5.201), np.float64(4.2173)): f(x) = -1.000102, khoang cach = 1.106396
+  diem 10 (np.float64(2.8809), np.float64(4.0168)): f(x) = +0.999897, khoang cach = 1.106169
+  diem 13 (np.float64(3.5876), np.float64(2.3601)): f(x) = +1.000205, khoang cach = 1.106509
+
+Nhan xet:
+- Moi vecto ho tro cach ranh gioi xap xi 1/||w|| = 1.106282.
+- Ly do: vecto ho tro nam tren hai mep le f(x)=+1 hoac f(x)=-1,
+  nen |f(x)|/||w|| = 1/||w||. Hai mep le cach nhau 2/||w||.
+
+===== baitap06\bai2.py =====
+Mo hinh goc
+  w = (-0.831357, -0.354868), b = +4.820361
+  chi so vecto ho tro = [18, 10, 13]
+
+Them diem lop 1 tai (-1, -1)
+  w = (-0.831357, -0.354868), b = +4.820361
+  chi so vecto ho tro = [18, 10, 13]
+  f(diem moi) = +6.006586; diem moi la vecto ho tro: False
+
+Thay bang diem lop 1 tai (4.5, 4)
+  w = (-2.603014, -0.806843), b = +15.940939
+  chi so vecto ho tro = [18, 24]
+  f(diem moi) = +1.000004; diem moi la vecto ho tro: True
+
+Muc thay doi so voi mo hinh goc:
+  (-1, -1)  : ||delta w|| = 0.000000, |delta b| = 0.000000
+  (4.5, 4)  : ||delta w|| = 1.828401, |delta b| = 11.120578
+
+Nhan xet:
+- Diem (-1,-1) nam xa ranh gioi ve dung phia lop 1, khong thanh vecto ho tro;
+  vi vay duong ranh gioi gan nhu khong thay doi.
+- Diem (4.5,4) nam sat/vuong vao le, tro thanh vecto ho tro va lam thay doi ranh gioi.
+- SVM duoc quyet dinh boi cac diem gan le, khong phai tat ca diem hoc.
+
+===== baitap06\bai3.py =====
+bac  C tot nhat  diem CV  accuracy kiem tra
+ 2           1    0.5422       0.5067
+ 3           1    0.8178       0.8267
+ 4         100    0.5156       0.4800
+
+Nhan xet:
+- Theo diem kiem dinh cheo, kernel da thuc tot nhat la bac 3 voi C=1, diem CV=0.8178.
+- Accuracy kiem tra cua cau hinh nay la 0.8267.
+- Kernel RBF o muc 5 dat 0.9200 tren tap kiem tra; doi chieu bang tren de ket luan
+  kernel da thuc co vuot RBF hay khong. Chon mo hinh dua tren CV, khong dua tren tap kiem tra.
+
+===== baitap06\bai4.py =====
+Diem kiem dinh cheo cua luoi min:
+gamma     0.3     1.0     3.0
+C                            
+3      0.8533  0.8711  0.8667
+10     0.8489  0.8711  0.8667
+30     0.8622  0.8756  0.8533
+
+Cap tot nhat: {'C': 30, 'gamma': 1}
+Diem CV tot nhat: 0.8756
+Accuracy tap kiem tra: 0.9200
+
+Nhan xet:
+- Diem CV tot nhat cao hon 0.8711 cua luoi tho.
+- Accuracy kiem tra khong doi, so voi 0.9200 cua luoi tho.
+- Luoi min giup kiem tra ky vung tham so tot, nhung khong bao dam tap kiem tra se tang.
+
+===== baitap06\bai5.py =====
+Bang nham lan (hang=chu so that, cot=chu so doan):
+[[45  0  0  0  0  0  0  0  0  0]
+ [ 0 46  0  0  0  0  0  0  0  0]
+ [ 0  0 44  0  0  0  0  0  0  0]
+ [ 0  0  0 46  0  0  0  0  0  0]
+ [ 0  0  0  0 44  0  0  0  1  0]
+ [ 0  0  0  0  0 46  0  0  0  0]
+ [ 0  0  0  0  0  0 45  0  0  0]
+ [ 0  0  0  0  0  0  0 44  0  1]
+ [ 0  1  0  0  0  0  0  0 42  0]
+ [ 0  0  0  1  0  0  0  0  0 44]]
+
+Cac cap bi nham:
+  9 -> 3: 1 lan
+  8 -> 1: 1 lan
+  4 -> 8: 1 lan
+  7 -> 9: 1 lan
+
+Nhan xet:
+- Mo hinh chi sai o mot vai chu so co net viet mo, dut hoac hinh dang gan voi lop khac.
+- Vi du 9 co the giong 3 khi net vong ben trai mo; 8 co the giong 1 neu hai vong bi dut;
+  4 co the giong 8 khi cac net khep kin; 7 co the giong 9 khi co them net cong.
+- Da luu hinh cac anh sai tai figures/bai5_chu_so_doan_sai.png.
+
+===== baitap06\bai6.py =====
+Thoi gian fit (giay):
+mo_hinh  LinearSVC      SVC
+n                          
+2000        0.0029   0.0284
+5000        0.0042   0.1349
+10000       0.0262   3.5389
+20000       0.0442  11.3396
+
+He so tang thoi gian khi n tang:
+SVC [np.float64(4.76), np.float64(26.23), np.float64(3.2)]
+LinearSVC [np.float64(1.44), np.float64(6.27), np.float64(1.69)]
+
+Nhan xet:
+- LinearSVC tang gan tuyen tinh theo so mau va phu hop hon cho du lieu lon.
+- SVC kernel RBF phai tinh quan he giua nhieu cap diem, nen thoi gian thuong tang nhanh
+  hon tuyen tinh; khi n tang gap doi, thoi gian co the tang nhieu hon gap doi.
+- So lieu thuc te phu thuoc cau hinh may, nhung xu huong ve do phuc tap van giu nguyen.
+
+Hoan tat 11 chuong trinh.
+C:\Users\lequy\Documents\Codex\2026-09-22\o\work\lab06_build\06. SVM\baitap06\bai5.py:39: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
