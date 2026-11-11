@@ -20,6 +20,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 | 04 | K láng giềng gần nhất: khoảng cách, chuẩn hóa, chọn k bằng kiểm định chéo, phân loại và hồi quy KNN | [04. KNN](04.%20KNN/) |
 | 05 | Cây quyết định và Rừng ngẫu nhiên: Gini, cắt tỉa cây, Random Forest, độ quan trọng đặc trưng và hồi quy | [05. DecisionTree_RandomForest](05.%20DecisionTree_RandomForest/) |
 | 06 | Máy vectơ hỗ trợ: lề rộng nhất, vectơ hỗ trợ, kernel, tham số C và gamma, dò lưới và nhận dạng chữ số viết tay | [06. SVM](06.%20SVM/) |
+| 07 | Đánh giá mô hình: dữ liệu lệch lớp, ma trận nhầm lẫn, precision, recall, F1, chọn ngưỡng, ROC/AUC và cân bằng lớp | [07. Accuracy_Metrics](07.%20Accuracy_Metrics/) |
 | 09 | Mạng nơ-ron nhiều lớp: lan truyền tiến, bài toán XOR, điều chuẩn, chuẩn hóa, dò siêu tham số, phân loại chữ số và hồi quy | [09. MLP](09.%20MLP/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
@@ -80,6 +81,15 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ chương trình
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 06
+├── 07. Accuracy_Metrics/
+│   ├── baitap07/             # Sáu bài tập Python độc lập
+│   ├── code/                 # Hai notebook và sáu phần thực hành
+│   ├── data/                 # Dữ liệu sinh viên bỏ học và giá nhà
+│   ├── figures/              # Đường ROC của các mô hình
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ chương trình
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 07
 ├── 09. MLP/
 │   ├── baitap09/             # Sáu bài tập Python độc lập
 │   ├── code/                 # Hai notebook và năm phần thực hành

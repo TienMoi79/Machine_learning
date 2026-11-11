@@ -1,0 +1,102 @@
+--- Bước 1 - Khi accuracy đánh lừa ---
+Kich thuoc bang: (1200, 5)
+   diem_tb  so_buoi_vang  tin_chi_no  gio_lam_them  bo_hoc
+0      8.0             3           0             0       0
+1      8.9             5           1             7       0
+2      3.3             3           1             4       0
+3      6.4             3           0             7       0
+4      7.9             3           5            23       0
+
+So sinh vien moi lop:
+bo_hoc
+0    1081
+1     119
+Ty le bo hoc: 0.099
+
+Tap kiem tra: 300 ban, 30 ban bo hoc
+
+Mo hinh luoi      accuracy 0.9000, tim ra 0 tren 30 ban bo hoc
+Hoi quy logistic  accuracy 0.9467, tim ra 17 tren 30 ban bo hoc
+
+--- Bước 2 - Ma trận nhầm lẫn ---
+Tu dem:
+ TP = 17 (doan bo hoc, dung la bo hoc)
+ FP = 3 (bao dong nham)
+ FN = 13 (bo sot)
+ TN = 267 (doan khong bo, dung la khong bo)
+ Tong = 300
+
+confusion_matrix cua scikit-learn:
+[[267   3]
+ [ 13  17]]
+Thu tu khi trai ra: TN, FP, FN, TP = [267   3  13  17]
+
+Accuracy tinh tu bon o: (17 + 267) / 300 = 0.9467
+So ban bi bao co nguy co: TP + FP = 20
+
+--- Bước 3 - Precision, recall và F1 ---
+Tinh tay tu bon o:
+ Precision = 17 / (17 + 3) = 0.8500
+ Recall = 17 / (17 + 13) = 0.5667
+ F1 = 2 x 0.8500 x 0.5667 / (0.8500 + 0.5667) = 0.6800
+
+Tinh bang scikit-learn:
+ Precision = 0.8500
+ Recall = 0.5667
+ F1 = 0.6800
+
+Bao cao day du:
+              precision    recall  f1-score   support
+
+    khong bo     0.9536    0.9889    0.9709       270
+      bo hoc     0.8500    0.5667    0.6800        30
+
+    accuracy                         0.9467       300
+   macro avg     0.9018    0.7778    0.8255       300
+weighted avg     0.9432    0.9467    0.9418       300
+
+
+--- Bước 4 - Đổi và chọn ngưỡng ---
+Tap kiem tra, doi nguong
+nguong so bao  TP  FP  FN  precision recall F1
+ 0.5      20  17   3  13   0.8500   0.5667 0.6800
+ 0.4      21  18   3  12   0.8571   0.6000 0.7059
+ 0.3      29  21   8   9   0.7241   0.7000 0.7119
+ 0.2      42  24  18   6   0.5714   0.8000 0.6667
+ 0.1      61  26  35   4   0.4262   0.8667 0.5714
+
+Nguong cho F1 cao nhat tren tap hoc: 0.25 (F1 kiem dinh cheo 0.6473)
+Tap kiem tra voi nguong 0.25: precision 0.6571, recall 0.7667, F1 0.7077
+
+--- Bước 5 - Đường ROC và AUC ---
+Duong ROC co 28 diem. Vai diem dau:
+ bao dong nham  recall
+ 0.0000          0.0000
+ 0.0000          0.0333
+ 0.0000          0.4000
+ 0.0074          0.4000
+ 0.0074          0.5333
+ 0.0111          0.5333
+AUC cua logistic = 0.9449
+
+Mo hinh          AUC    recall   F1 (nguong 0.5)
+ Logistic       0.9449 0.5667 0.6800
+ Naive Bayes    0.9336 0.3667 0.5116
+ KNN, k = 15    0.9274 0.2333 0.3684
+ Cay sau 4      0.8803 0.4667 0.5957
+ Rung 200 cay   0.9249 0.5667 0.6538
+ SVM RBF        0.8996 0.5000 0.6250
+
+--- Bước 6 - Kiểm định chéo và cân bằng lớp ---
+Khong stratify, so ban bo hoc trong tap kiem tra:
+  [22, 26, 35, 29, 32, 27, 28, 20, 27, 23]
+
+Kiem dinh cheo 5 phan tren tap hoc:
+ accuracy   0.9289
+ precision  0.7044
+ recall     0.4810
+ f1         0.5652
+
+Tap kiem tra  precision recall F1
+ Binh thuong  0.8500    0.5667 0.6800
+ Can bang lop 0.4483    0.8667 0.5909

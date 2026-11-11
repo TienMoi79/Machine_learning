@@ -1,0 +1,94 @@
+--- Bài 1 ---
+Logistic
+  Tu tinh : (0.9467, 0.85, 0.5667, 0.68)
+  Thu vien: (0.9467, 0.85, 0.5667, 0.68)
+Mo hinh luoi
+  Tu tinh : (0.9, 0.0, 0.0, 0.0)
+  Thu vien: (0.9, 0.0, 0.0, 0.0)
+
+Nhan xet va giai thich:
+- Mo hinh luoi khong bao mot mau duong nao, nen TP+FP=0 va precision co phep chia cho 0.
+- Ve mat toan hoc precision khi do khong xac dinh. Ham nay quy uoc tra 0.0, giong
+  scikit-learn khi dat zero_division=0, de chuong trinh khong loi va y nghia ro rang.
+- Accuracy cua mo hinh luoi cao do lop 0 chiem da so, nhung recall lop bo hoc bang 0.
+
+--- Bài 2 ---
+              precision    recall  f1-score   support
+
+           0     1.0000    1.0000    1.0000        45
+           1     0.9787    1.0000    0.9892        46
+           2     1.0000    1.0000    1.0000        44
+           3     0.9787    1.0000    0.9892        46
+           4     1.0000    0.9778    0.9888        45
+           5     1.0000    1.0000    1.0000        46
+           6     1.0000    1.0000    1.0000        45
+           7     1.0000    0.9778    0.9888        45
+           8     0.9767    0.9767    0.9767        43
+           9     0.9778    0.9778    0.9778        45
+
+    accuracy                         0.9911       450
+   macro avg     0.9912    0.9910    0.9911       450
+weighted avg     0.9912    0.9911    0.9911       450
+
+Chu so co recall thap nhat: [8] (0.9767)
+Chu so co precision thap nhat: [8] (0.9767)
+
+Nhan xet:
+- Cac chu so nay co net viet gan voi lop khac, nen de bi bo sot hoac nhan nham.
+- Moi lop co khoang 44-46 anh trong tap kiem tra. Vi support gan bang nhau, macro avg
+  va weighted avg gan bang nhau; khong co lop dong nao chi phoi trung binh co trong so.
+
+--- Bài 3 ---
+Nguong lon nhat co recall CV >= 0.8: 0.17
+Recall tren du doan cheo tap hoc: 0.8090
+Tap kiem tra - recall:    0.8000
+Tap kiem tra - precision: 0.5106
+So ban bi bao: 47 tren 300
+
+Nhan xet va giai thich:
+- Nguong duoc chon chi tu xac suat cross_val_predict tren tap hoc. Moi xac suat den tu
+  mot mo hinh chua tung thay mau do, nen khong nhin dap an cua tap kiem tra.
+- Chon nguong lon nhat van dat recall >=0.8 giup han che bao dong nham trong cac nguong
+  thoa yeu cau. Tap kiem tra chi dung mot lan sau khi nguong da duoc khoa.
+- Recall tap kiem tra co the khac 0.8 do sai khac lay mau; yeu cau tren tap hoc khong bao
+  dam chinh xac cung mot con so tren du lieu moi.
+
+--- Bài 4 ---
+AUC Logistic:      0.9449
+AUC Random Forest: 0.9249
+Hai duong co doan doi thu tu/cat nhau: True
+
+Nhan xet:
+- Duong co AUC cao hon nhin chung om sat goc tren ben trai hon.
+- Hai duong co the cat nhau o mot so vung nguong, vi mot mo hinh co the tot hon tai FPR
+  thap nhung kem hon tai FPR cao. AUC tom tat toan bo duong chu khong mo ta moi diem.
+- Da luu hinh tai figures/roc.png.
+
+--- Bài 5 ---
+Mo hinh          precision recall F1
+RF binh thuong   0.7727    0.5667 0.6538
+RF can bang      0.7500    0.4000 0.5217
+SVC binh thuong  0.8824    0.5000 0.6383
+SVC can bang     0.4464    0.8333 0.5814
+
+Nhan xet:
+- Tong thay doi ba thuoc do: Random Forest=0.3215, SVC=0.8262.
+- SVC thay doi nhieu hon theo tong chenh lech nay.
+- class_weight='balanced' phat nang loi o lop hiem, thuong lam recall tang nhung precision
+  co the giam vi mo hinh bao nhieu mau duong hon.
+
+--- Bài 6 ---
+                 MAE      RMSE       R2
+Du doan goc     0.2185   0.2700   0.9759
+Mot du doan +5  0.5519   1.4433   0.3110
+
+Muc thay doi tuyet doi:
+ MAE:  0.3333
+ RMSE: 1.1733
+ R2:   0.6649
+
+Nhan xet:
+- RMSE tang manh hon MAE theo don vi gia, vi RMSE binh phuong tung sai so truoc khi lay
+  trung binh. Sai so lon 5 ty dong tao thanh 25 trong tong binh phuong sai so.
+- MAE chi cong do lon sai so nen moi diem anh huong tuyen tinh. R2 giam vi tong sai so
+  binh phuong tang, cho thay mo hinh giai thich du lieu kem hon sau lan doan hong.
