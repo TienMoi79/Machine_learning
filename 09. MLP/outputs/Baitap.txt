@@ -1,0 +1,79 @@
+--- Bài 1 ---
+ i   tu tinh        predict_proba   chenh lech
+ 1   0.0175579854    0.0175579854      0.00e+00
+ 2   0.9994348320    0.9994348320      0.00e+00
+ 3   0.7943310566    0.7943310566      0.00e+00
+ 4   0.1344008896    0.1344008896      2.78e-17
+ 5   0.9578057181    0.9578057181      0.00e+00
+
+Sai khac lon nhat: 2.7755575615628914e-17
+
+Nhan xet:
+- Lop an tinh X @ W1 + b1 roi dua qua ReLU; lop ra tinh H @ W2 + b2 roi qua sigmoid.
+- Ket qua tu tinh trung voi predict_proba den sai so may, chung to lan truyen tien da dung.
+- coefs_ chua ma tran trong so giua cac lop; intercepts_ chua he so chan cua tung lop.
+
+--- Bài 2 ---
+x1 x2  h1  h2  y
+ 0  0   0   0  0
+ 0  1   0   1  1
+ 1  0   1   0  1
+ 1  1   0   0  0
+
+Nhan xet va giai thich:
+- Neu x1=x2 thi ca x1-x2 va x2-x1 deu bang 0, nen h1=h2=0 va y=0.
+- Neu x1 khac x2, mot trong hai hieu bang 1 con hieu kia bang -1.
+  ReLU giu so 1 va bien so -1 thanh 0, nen h1+h2=1.
+- Vi vay y bang 1 khi hai dau vao khac nhau va bang 0 khi chung giong nhau: dung la XOR.
+
+--- Bài 3 ---
+ham kich hoat   tap hoc   tap kiem tra
+logistic        0.8400       0.8533
+tanh            0.8711       0.9067
+relu            0.8800       0.9067
+
+Nhan xet:
+- Tren lan chia du lieu nay, tanh va relu cung dat accuracy kiem tra cao nhat: 0.9067.
+- Ham kich hoat tao dang phi tuyen khac nhau; ket qua con phu thuoc du lieu va dieu chuan.
+- Nen chon bang kiem dinh cheo thay vi ket luan mot ham luon tot nhat.
+
+--- Bài 4 ---
+toc do hoc   so vong   loss cuoi   accuracy
+    0.0001       582     0.01893   0.9889
+     0.001       144     0.00521   0.9844
+      0.01        38     0.00108   0.9778
+       0.1        30     0.12037   0.9511
+
+Nhan xet:
+- Toc do qua nho lam loss giam cham, can nhieu vong va co the chua den diem tot.
+- Toc do qua lon co the vuot qua diem toi uu, loss dao dong hoac hoi tu den nghiem kem.
+- Toc do vua phai giup loss giam nhanh, on dinh va accuracy kiem tra cao.
+- Da luu hinh tai figures/toc_do_hoc.png.
+
+--- Bài 5 ---
+Cap tham so tot nhat: {'mlpclassifier__alpha': 1.0, 'mlpclassifier__hidden_layer_sizes': (100,)}
+Diem kiem dinh cheo tot nhat: 0.9777
+Accuracy MLP tren tap kiem tra: 0.9844
+Accuracy SVM kernel RBF:        0.9911
+
+Nhan xet:
+- Cau hinh tot nhat theo kiem dinh cheo la {'mlpclassifier__alpha': 1.0, 'mlpclassifier__hidden_layer_sizes': (100,)}.
+- MLP khong vuot SVM tren tap kiem tra nay.
+- Tap kiem tra chi duoc dung sau khi chon tham so; khong dung no de chon mo hinh.
+C:\Python312\Lib\site-packages\sklearn\neural_network\_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
+C:\Python312\Lib\site-packages\sklearn\neural_network\_multilayer_perceptron.py:785: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (500) reached and the optimization hasn't converged yet.
+  warnings.warn(
+
+--- Bài 6 ---
+MAE hoi quy tuyen tinh: 0.3123
+MAE MLPRegressor:       0.5050
+Gia du doan can 250 m2 - tuyen tinh: 20.0672
+Gia du doan can 250 m2 - MLP:        28.6338
+Khoang dien tich du lieu hoc: 37.6 den 115.9 m2
+
+Nhan xet:
+- Can 250 m2 nam ngoai khoang dien tich hoc, nen day la bai toan ngoai suy.
+- Hoi quy tuyen tinh tiep tuc duong thang ra ngoai mien hoc.
+- MLP hoc quan he phi tuyen trong mien da thay, nhung khong bi rang buoc phai tiep tuc theo
+  xu huong duong thang; vi vay ngoai suy thuong kem on dinh hon hoi quy tuyen tinh.

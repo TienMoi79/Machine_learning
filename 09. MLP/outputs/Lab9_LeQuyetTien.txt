@@ -1,0 +1,66 @@
+--- Bước 1 - Tự tính lan truyền tiến ---
+Mot no-ron:
+ z = 0.8*2.0 + (-0.5)*1.0 + 0.3*3.0 + (-0.2) = 1.80
+ a = sigmoid(z) = 0.8581
+
+Mang giai XOR:
+ x1 x2 h1 h2 y
+ 0  0  0  0  0
+ 0  1  1  0  1
+ 1  0  1  0  1
+ 1  1  2  1  0
+
+Tinh ca bang mot lan: [0. 1. 1. 0.]
+
+--- Bước 2 - Một nơ-ron và một lớp ẩn trên XOR ---
+Hoi quy logistic: 0.4500
+
+So no-ron an  so tham so  tap hoc  tap kiem tra
+  1             5     0.6533       0.6900
+  2             9     0.6533       0.6900
+  4            17     0.9033       0.9300
+  8            33     0.9167       0.9100
+
+--- Bước 3 - Độ lớn mạng và điều chuẩn ---
+Ba mang                     tap hoc  tap kiem tra
+ (2,), alpha 1e-4            0.8444       0.8533
+ (100, 100), alpha 1e-5      1.0000       0.7867
+ (100, 100), alpha 1.0       0.8800       0.9067
+
+alpha       kiem dinh cheo
+ 1e-05      0.7911
+ 0.001      0.7867
+ 0.1        0.7556
+ 1          0.8578
+ 3          0.8444
+ 10         0.8356
+alpha tot nhat = 1, tap kiem tra 0.9067
+
+--- Bước 4 - Mạng nơ-ron khi quên chuẩn hóa ---
+Doan bua ca lop qua : 0.6000
+Khong chuan hoa     : 0.4000
+Co chuan hoa        : 0.9000
+
+Khong chuan hoa, so ban doan qua: 0 tren 30
+
+--- Bước 5 - Nhận dạng chữ số viết tay ---
+Kich thuoc cac ma tran trong so: [(64, 100), (100, 10)]
+Tong so tham so: 7510
+So vong hoc: 144
+Mat mat vong 1: 2.5206, vong 10: 0.4448, vong cuoi: 0.0052
+
+Accuracy tren tap kiem tra: 0.9844
+So anh doan sai: 7 tren 450
+ anh   6: that la 9, doan la 3
+ anh  61: that la 5, doan la 7
+ anh  77: that la 2, doan la 1
+ anh  85: that la 9, doan la 7
+ anh 276: that la 8, doan la 2
+ anh 428: that la 7, doan la 9
+ anh 443: that la 4, doan la 7
+
+Dung som sau 44 vong, accuracy 0.9578
+
+Logistic co chuan hoa  0.9711
+KNN, k = 5             0.9867
+SVM kernel RBF         0.9911
