@@ -21,6 +21,7 @@ Repository lưu mã nguồn, dữ liệu, notebook, biểu đồ và kết quả
 | 05 | Cây quyết định và Rừng ngẫu nhiên: Gini, cắt tỉa cây, Random Forest, độ quan trọng đặc trưng và hồi quy | [05. DecisionTree_RandomForest](05.%20DecisionTree_RandomForest/) |
 | 06 | Máy vectơ hỗ trợ: lề rộng nhất, vectơ hỗ trợ, kernel, tham số C và gamma, dò lưới và nhận dạng chữ số viết tay | [06. SVM](06.%20SVM/) |
 | 07 | Đánh giá mô hình: dữ liệu lệch lớp, ma trận nhầm lẫn, precision, recall, F1, chọn ngưỡng, ROC/AUC và cân bằng lớp | [07. Accuracy_Metrics](07.%20Accuracy_Metrics/) |
+| 08 | Phân cụm K-Means: tự cài đặt thuật toán, chọn K, Silhouette, phân khúc khách hàng, nén ảnh, DBSCAN và phân cụm chữ số | [08. K-Means](08.%20K-Means/) |
 | 09 | Mạng nơ-ron nhiều lớp: lan truyền tiến, bài toán XOR, điều chuẩn, chuẩn hóa, dò siêu tham số, phân loại chữ số và hồi quy | [09. MLP](09.%20MLP/) |
 
 Các bài tiếp theo sẽ được bổ sung lần lượt theo tiến độ môn học.
@@ -90,6 +91,15 @@ Machine_learning/
 │   ├── scripts/              # Script chạy toàn bộ chương trình
 │   ├── requirements.txt      # Danh sách thư viện Python
 │   └── README.md             # Hướng dẫn riêng của bài 07
+├── 08. K-Means/
+│   ├── baitap08/             # Notebook gồm sáu bài tập K-Means
+│   ├── code/                 # Hai notebook và năm phần thực hành
+│   ├── data/                 # Dữ liệu khách hàng và hai vầng trăng
+│   ├── figures/              # Biểu đồ phân cụm và ảnh nén
+│   ├── outputs/              # Kết quả chạy dạng văn bản
+│   ├── scripts/              # Script chạy toàn bộ notebook
+│   ├── requirements.txt      # Danh sách thư viện Python
+│   └── README.md             # Hướng dẫn riêng của bài 08
 ├── 09. MLP/
 │   ├── baitap09/             # Sáu bài tập Python độc lập
 │   ├── code/                 # Hai notebook và năm phần thực hành
