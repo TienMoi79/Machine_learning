@@ -1,0 +1,61 @@
+Thu muc Lab 08: C:\Users\lequy\Documents\Codex\2026-09-22\o\work\lab08_build\Lab08_LeQuyetTien
+
+Tam tu viet:
+ [[1.25 1.5 ]
+ [3.9  5.1 ]]
+Nhan: [0 0 1 1 1 1 1]
+So vong lap: 3
+Inertia tu viet: 8.525
+Inertia sklearn: 8.525
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_34560\2613663024.py:32: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+
+Inertia:
+C:\Users\lequy\AppData\Local\Temp\ipykernel_34560\269645796.py:29: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+
+ 23.017
+   thu_nhap  diem_chi_tieu  so_khach  tuoi_trung_binh
+0      7.48          80.20        35            24.94
+1     30.13          19.97        35            42.86
+2     17.39          49.30        60            40.45
+3      8.04          18.85        40            44.88
+4     30.21          81.53        40            32.62
+
+Khach hang moi va cum du doan:
+   thu_nhap  diem_chi_tieu  cum
+0        29             85    4
+1         9             75    0
+
+ K  inertia  silhouette
+ 1 420.0000         NaN
+ 2 250.3985      0.4300
+ 3 152.5400      0.5217
+ 4  73.7574      0.6256
+ 5  23.0167      0.7227
+ 6  20.8739      0.6508
+ 7  19.0119      0.5413
+ 8  17.4235      0.4538
+ 9  15.8928      0.4713
+10  14.4467      0.4254
+
+K tot nhat theo silhouette: 5
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_34560\1235680739.py:17: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "k3_chon_k.png", dpi=150); plt.show()
+
+Silhouette khong chuan hoa: 0.666
+Silhouette co chuan hoa:   0.723
+Inertia voi khoi tao random (min/max): 23.017 118.162
+ARI cua K-Means tren hai vang trang: 0.247
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_34560\2940478915.py:29: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "k4_ba_cai_bay.png", dpi=150); plt.show()
+
+Kich thuoc anh: (427, 640, 3)
+So pixel: 273280
+So mau khac nhau: 96615
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_34560\3178653645.py:19: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "k5_nen_anh.png", dpi=150); plt.show()

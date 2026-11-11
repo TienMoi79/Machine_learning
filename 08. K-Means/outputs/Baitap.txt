@@ -1,0 +1,109 @@
+Thu muc Lab 08: C:\Users\lequy\Documents\Codex\2026-09-22\o\work\lab08_build\Lab08_LeQuyetTien
+
+Trung binh tu tinh:  0.72270551
+Trung binh sklearn: 0.72270551
+Chenh lech:         1.11e-16
+
+Khach hang co silhouette thap nhat (chi so 113 ):
+tuoi             38.0
+thu_nhap         25.4
+diem_chi_tieu    41.0
+Cum: 2 | silhouette: 0.0286
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\2128006932.py:41: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "bt1_silhouette.png", dpi=150); plt.show()
+
+ K  inertia  silhouette
+ 2 373.5058      0.3730
+ 3 271.8062      0.4220
+ 4 187.2230      0.4558
+ 5 133.4585      0.4808
+ 6 108.8831      0.4760
+ 7  92.9637      0.4627
+ 8  80.6993      0.4596
+ 9  69.5808      0.4622
+10  58.4004      0.4573
+
+K tot nhat trong khong gian 3 chieu: 5
+
+Tam cum 3 chieu (don vi goc):
+ tuoi  thu_nhap  diem_chi_tieu
+44.88      8.04          18.85
+25.13      8.48          77.56
+42.86     30.13          19.97
+32.08     30.28          82.00
+41.65     17.58          49.18
+
+So sanh: phien ban 2 chieu dung K=5; phien ban 3 chieu chon K= 5
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\1186753569.py:24: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.savefig(FIGURES / "bt2_chon_k_3d.png", dpi=150); plt.show()
+
+ khoi_tao  so_lan_inertia_xap_xi_23     min  trung_binh      max  do_lech_chuan
+   random                        30 23.0167     53.2914 204.0456        41.8574
+k-means++                        50 23.0167     23.0167  23.0167         0.0000
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\841643097.py:23: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "bt3_khoi_tao.png", dpi=150); plt.show()
+
+Kich thuoc anh goc PNG: 550,154 byte
+Kich thuoc anh 16 mau:  130,684 byte
+Ti le tep nen/goc:      0.238
+Chua co data/anh_ca_nhan.png; hay them anh cua ban de lam phan mo rong ca nhan.
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\911672399.py:27: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.show()
+
+ eps  so_cum  so_diem_nhieu     ARI
+ 0.2       1             40 -0.0014
+ 0.3       1             10  0.0012
+ 0.4       1              3 -0.0001
+ARI K-Means: 0.2475
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\2784853809.py:18: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "bt5_dbscan.png", dpi=150); plt.show()
+
+Bang cheo nhan that - cum K-Means:
+cum            0    1    2   3    4    5    6    7    8    9
+chu_so_that                                                 
+0            176    0    0   0    0    0    2    0    0    0
+1              0  100    0  54    1    2    0    1    0   24
+2              1    8    3   2   13    0    0    0    2  148
+3              0    7    7   0  154    0    0    2   13    0
+4              0    2   11   3    0    0  165    0    0    0
+5              0    0    0   0    2    1    2  136   41    0
+6              1    3    0   0    0  177    0    0    0    0
+7              0    2  174   2    0    0    0    1    0    0
+8              0  100    5   6    2    2    0    4   52    3
+9              0    1    8  20    6    0    0    6  139    0
+
+Ty le lon nhat cua tung chu so trong mot cum:
+chu_so_that
+0    0.989
+6    0.978
+7    0.972
+4    0.912
+3    0.842
+2    0.836
+9    0.772
+5    0.747
+8    0.575
+1    0.549
+
+Chu so gon/ro nhat: 0
+Chu so bi phan tan nhat: 1
+
+Hai chu so xuat hien nhieu nhat trong moi cum:
+Cum 0: 0 (176), 2 (1)
+Cum 1: 1 (100), 8 (100)
+Cum 2: 7 (174), 4 (11)
+Cum 3: 1 (54), 9 (20)
+Cum 4: 3 (154), 2 (13)
+Cum 5: 6 (177), 1 (2)
+Cum 6: 4 (165), 0 (2)
+Cum 7: 5 (136), 9 (6)
+Cum 8: 9 (139), 8 (52)
+Cum 9: 2 (148), 1 (24)
+
+C:\Users\lequy\AppData\Local\Temp\ipykernel_4628\3926753133.py:24: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.tight_layout(); plt.savefig(FIGURES / "bt6_tam_chu_so.png", dpi=150); plt.show()
