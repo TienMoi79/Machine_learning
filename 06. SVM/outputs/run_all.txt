@@ -197,5 +197,5 @@ Nhan xet:
 - So lieu thuc te phu thuoc cau hinh may, nhung xu huong ve do phuc tap van giu nguyen.
 
 Hoan tat 11 chuong trinh.
-baitap06\bai5.py:39: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+baitap06/bai5.py:39: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
   plt.show()
